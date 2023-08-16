@@ -3,6 +3,7 @@ class PlantsController < ApplicationController
 
   def index
     plants = Plant.all
+    render json: plants, status: 200
   end
 
   def show
@@ -17,6 +18,11 @@ class PlantsController < ApplicationController
   def update
     plant = Plant.find(params[:id])
     plant.update(plant_params)
+  end
+
+  def featured
+    featured = Plant.where(featured: true)
+    render json: featured, status: 200
   end
 
   private

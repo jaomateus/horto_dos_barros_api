@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # get 'plants', to: 'plants#all_plants'
   # get 'plant', to: 'plants#plant'
   resources :plants, only: [:index, :show, :create, :edit]
+  get 'featured', to: 'plants#featured'
 end
