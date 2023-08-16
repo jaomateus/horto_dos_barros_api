@@ -8,6 +8,7 @@ class PlantsController < ApplicationController
 
   def show
     plant = Plant.find(params[:id])
+    render json: plant, status: 200
   end
 
   def create
