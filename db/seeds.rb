@@ -8,7 +8,7 @@
 
 require 'httparty'
 
-const barros_plants = [
+BARROS_PLANTS = [
   "Agastache rugosa",
   "Akebia quinata",
   "Allium ramosum",
@@ -141,15 +141,44 @@ const barros_plants = [
   "Calycanthus floridus"
 ]
 
-puts "First lets dele the old values"
+puts 'First, let\'s delete the old values'
 Plant.delete_all
+
 puts "Let's fill the database with some plants"
 puts 'Creating plants...'
 
-barros_plants.each do |plant|
-  puts plant
+BARROS_PLANTS.each do |plant_name|
+  plant_data = fetch_plant_data(plant_name)
+
+  if plant_data
+    Plant.create!(
+      id_trefle: plant_data[:id_trefle],
+      scientific_name: plant_data[:scientific_name],
+      common_name: plant_data[:common_name],
+      family: plant_data[:family],
+      genus: plant_data[:genus],
+      image_url: plant_data[:image_url]
+    )
+    puts "created #{plant_name}"
+  end
+end
+
+private
+
+def fetch_plant_data(plant_name)
   response = HTTParty.get(
-    "https://trefle.io/api/v1/plants?token=#{ENV['TREFLE_TOKEN']}&filter[scientific_name]=#{plant}"
+    "https://trefle.io/api/v1/plants?token=#{ENV['TREFLE_TOKEN']}&filter[scientific_name]=#{plant_name}"
   )
-  puts response
+
+  plant_data = response['data'][0] if response.code == 200
+  return nil unless plant_data
+
+  {
+    scientific_name: plant_data['scientific_name'],
+    common_name: plant_data['common_name'],
+    family: plant_data['family'],
+    genus: plant_data['genus'],
+    image_url: plant_data['image_url'],
+    id_trefle: plant_data['id']
+  }
 end
