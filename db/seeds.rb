@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts "Let's fill the database with some plants "
+require 'httparty'
 
-const barrosPlants = [
+const barros_plants = [
   "Agastache rugosa",
   "Akebia quinata",
   "Allium ramosum",
@@ -140,3 +140,16 @@ const barrosPlants = [
   "Debregeasia edullis",
   "Calycanthus floridus"
 ]
+
+puts "First lets dele the old values"
+Plant.delete_all
+puts "Let's fill the database with some plants"
+puts 'Creating plants...'
+
+barros_plants.each do |plant|
+  puts plant
+  response = HTTParty.get(
+    "https://trefle.io/api/v1/plants?token=#{ENV['TREFLE_TOKEN']}&filter[scientific_name]=#{plant}"
+  )
+  puts response
+end
