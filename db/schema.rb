@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_124921) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_16_225452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_124921) do
     t.boolean "eddible"
     t.boolean "n_fixer"
     t.string "image_url"
+    t.integer "stock"
   end
 
 end
