@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_225452) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_16_233633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_225452) do
     t.boolean "n_fixer"
     t.string "image_url"
     t.integer "stock"
+    t.integer "stars"
   end
 
 end
