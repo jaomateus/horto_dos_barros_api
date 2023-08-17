@@ -160,40 +160,46 @@ def fetch_plant_data(plant_name)
 end
 
 # ------------ Comment out when not necessary ----------
-puts 'First, let\'s delete the old values'
-Plant.delete_all
+# puts 'First, let\'s delete the old values'
+# Plant.delete_all
 
-puts "Let's fill the database with some plants"
-puts 'Creating plants...'
+# puts "Let's fill the database with some plants"
+# puts 'Creating plants...'
 
-BARROS_PLANTS.each do |plant_name|
-  plant_data = fetch_plant_data(plant_name)
-  prices = [(10 / 100), (15 / 100), (18 / 100), (20 / 100), (25 / 100)]
-  soil_ph = [1.5, 5.3, 7.0, 4.4]
-  sun_requirements = ['full sun', 'partially shade', 'shade']
-  drought_tolerance = ['high', 'low', 'moderate']
-  plant_height = [5, 4, 6, 3.5, 2, 7, 10, 20]
-  featured = [true, false]
-
-  if plant_data
-    Plant.create!(
-      id_trefle: plant_data[:id_trefle],
-      scientific_name: plant_data[:scientific_name],
-      common_name: plant_data[:common_name],
-      family: plant_data[:family],
-      genus: plant_data[:genus],
-      image_url: plant_data[:image_url],
-      stock: rand(1..30),
-      stars: rand(1..5),
-      price: prices.sample,
-      soil_ph: soil_ph.sample,
-      sun_requirements: sun_requirements.sample,
-      drought_tolerance: drought_tolerance.sample,
-      plant_height: plant_height.sample,
-      plant_width: plant_height.sample,
-      featured: featured.sample
-    )
-    puts "created #{plant_name}"
-  end
-end
+# BARROS_PLANTS.each do |plant_name|
+#   plant_data = fetch_plant_data(plant_name)
+#   if plant_data
+#     Plant.create!(
+#       id_trefle: plant_data[:id_trefle],
+#       scientific_name: plant_data[:scientific_name],
+#       common_name: plant_data[:common_name],
+#       family: plant_data[:family],
+#       genus: plant_data[:genus],
+#       image_url: plant_data[:image_url],
+#     )
+#     puts "created #{plant_name}"
+#   end
+# end
 # --------------------------------------------------------
+prices = [(10 / 100), (15 / 100), (18 / 100), (20 / 100), (25 / 100)]
+soil_ph = [1.5, 5.3, 7.0, 4.4]
+sun_requirements = ['full sun', 'partially shade', 'shade']
+drought_tolerance = ['high', 'low', 'moderate']
+plant_height = [5, 4, 6, 3.5, 2, 7, 10, 20]
+featured = [true, false]
+
+plants = Plant.all
+plants.each do |plant|
+  plant.update!(
+    stock_quantity: rand(1..30),
+    stars: rand(1..5),
+    price: prices.sample,
+    soil_ph: soil_ph.sample,
+    sun_requirements: sun_requirements.sample,
+    drought_tolerance: drought_tolerance.sample,
+    plant_height: plant_height.sample,
+    plant_width: plant_height.sample,
+    featured: featured.sample
+  )
+  puts "#{plant.scientific_name} updated..."
+end
