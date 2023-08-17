@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_233633) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_17_001630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_233633) do
     t.string "image_url"
     t.integer "stock"
     t.integer "stars"
+    t.string "sun_requirements"
+    t.decimal "soil_ph", precision: 2
+    t.string "drought_tolerance"
+    t.decimal "plant_height", precision: 2
+    t.decimal "plant_width", precision: 2
   end
 
 end
