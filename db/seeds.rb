@@ -36,7 +36,6 @@ BARROS_PLANTS = [
   "Citrus sinensis",
   "Cornus mas",
   "Corylus avelana",
-  "Corylus avelana",
   "Crambe maritima",
   "Crataegus monogyna",
   "Crithmum maritimum",
@@ -141,23 +140,23 @@ BARROS_PLANTS = [
   "Calycanthus floridus"
 ]
 
-def fetch_plant_data(plant_name)
-  response = HTTParty.get(
-    "https://trefle.io/api/v1/plants?token=#{ENV['TREFLE_TOKEN']}&filter[scientific_name]=#{plant_name}"
-  )
+# def fetch_plant_data(plant_name)
+#   response = HTTParty.get(
+#     "https://trefle.io/api/v1/plants?token=#{ENV['TREFLE_TOKEN']}&filter[scientific_name]=#{plant_name}"
+#   )
 
-  plant_data = response['data'][0] if response.code == 200
-  return nil unless plant_data
+#   plant_data = response['data'][0] if response.code == 200
+#   return nil unless plant_data
 
-  {
-    scientific_name: plant_data['scientific_name'],
-    common_name: plant_data['common_name'],
-    family: plant_data['family'],
-    genus: plant_data['genus'],
-    image_url: plant_data['image_url'],
-    id_trefle: plant_data['id']
-  }
-end
+#   {
+#     scientific_name: plant_data['scientific_name'],
+#     common_name: plant_data['common_name'],
+#     family: plant_data['family'],
+#     genus: plant_data['genus'],
+#     image_url: plant_data['image_url'],
+#     id_trefle: plant_data['id']
+#   }
+# end
 
 # ------------ Comment out when not necessary ----------
 # puts 'First, let\'s delete the old values'
@@ -188,7 +187,7 @@ drought_tolerance = ['high', 'low', 'moderate']
 plant_height = [5, 4, 6, 3.5, 2, 7, 10, 20]
 featured = [true, false]
 
-plants = Plant.all
+plants = Plant.all.to_a
 plants.each do |plant|
   plant.update!(
     stock_quantity: rand(1..30),
@@ -199,7 +198,8 @@ plants.each do |plant|
     drought_tolerance: drought_tolerance.sample,
     plant_height: plant_height.sample,
     plant_width: plant_height.sample,
-    featured: featured.sample
+    featured: featured.sample,
+    reviews: rand(1..100)
   )
   puts "#{plant.scientific_name} updated..."
 end
