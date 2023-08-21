@@ -25,7 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_152146) do
 
   create_table "plants", force: :cascade do |t|
     t.integer "id_trefle"
-    t.integer "stock_quantity"
     t.boolean "discontinued"
     t.decimal "price"
     t.datetime "created_at", null: false
