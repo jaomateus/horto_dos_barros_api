@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_152146) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_155328) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,7 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_152146) do
   create_table "plants", force: :cascade do |t|
     t.integer "id_trefle"
     t.boolean "discontinued"
-    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "featured"
@@ -45,6 +44,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_152146) do
     t.decimal "plant_height", precision: 2
     t.decimal "plant_width", precision: 2
     t.integer "reviews"
+    t.integer "fruit_color"
+    t.float "price"
+    t.boolean "bee_plant"
+    t.boolean "nutrient_miner"
+    t.string "soil_type"
+    t.integer "hardiness_zone"
   end
 
 end
