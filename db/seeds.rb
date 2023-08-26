@@ -180,26 +180,41 @@ BARROS_PLANTS = [
 #   end
 # end
 # --------------------------------------------------------
-prices = [(10 * 100), (15 * 100), (18 * 100), (20 * 100), (25 * 100)]
+prices = [(10 * 100), (15 * 100), (18 * 100), (20 * 100), (25 * 100),(5.5 * 100), (12.5 * 100), (15.3 * 100), (22.5 * 100), (25.7 * 100)]
 # soil_ph = [1.5, 5.3, 7.0, 4.4]
 # sun_requirements = ['full sun', 'partially shade', 'shade']
 # drought_tolerance = ['high', 'low', 'moderate']
 # plant_height = [5, 4, 6, 3.5, 2, 7, 10, 20]
 # featured = [true, false]
+# categories = [
+#     "canopy layer",
+#     "low trees",
+#     "shrubs",
+#     "climbing plants",
+#     "herb layer",
+#     "ground cover",
+#     "roots and tubers",
+#   ];
+# flower_colors = ['blue', 'purpure', 'red', 'orange', 'yellow', 'green', 'white']
 
 plants = Plant.all.to_a
 plants.each do |plant|
   plant.update!(
     # stock_quantity: rand(1..30),
     # stars: rand(1..5),
-    price: prices.sample,
+    # price: prices.sample
     # soil_ph: soil_ph.sample,
     # sun_requirements: sun_requirements.sample,
     # drought_tolerance: drought_tolerance.sample,
     # plant_height: plant_height.sample,
     # plant_width: plant_height.sample,
     # featured: featured.sample,
-    # reviews: rand(1..100)
+    # reviews: rand(1..100),
+    # category: categories.sample,
+    # flower_color: flower_colors.sample
+    n_fixer: [true, false].sample,
+    bee_plant: [true, false].sample,
+    nutrient_miner: [true, false].sample
   )
   puts "#{plant.scientific_name} updated..."
 end

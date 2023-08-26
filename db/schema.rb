@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_214343) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_120435) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,7 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_214343) do
     t.boolean "nutrient_miner"
     t.string "soil_type"
     t.integer "hardiness_zone"
-    t.string "category"
+    t.string "layer"
+    t.string "flower_color"
   end
 
 end
