@@ -212,9 +212,10 @@ plants.each do |plant|
     # reviews: rand(1..100),
     # category: categories.sample,
     # flower_color: flower_colors.sample
-    n_fixer: [true, false].sample,
-    bee_plant: [true, false].sample,
-    nutrient_miner: [true, false].sample
+    # n_fixer: [true, false].sample,
+    # bee_plant: [true, false].sample,
+    # nutrient_miner: [true, false].sample,
+
   )
   puts "#{plant.scientific_name} updated..."
 end

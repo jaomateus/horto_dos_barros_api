@@ -16,7 +16,7 @@ module HortoDosBarrosApi
     # Enable Cors connections from frontend
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000', 'http://localhost:8888' # Replace with your frontend's origin
+        origins 'http://localhost:3000','http://localhost:3001', 'http://localhost:8888' # Replace with your frontend's origin
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
     end

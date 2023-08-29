@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
-  # get 'plants', to: 'plants#all_plants'
-  # get 'plant', to: 'plants#plant'
   resources :plants, only: [:index, :show, :create, :edit]
   get 'featured', to: 'plants#featured'
+  post '/create_payment_intent', to: 'payments#create_payment_intent'
 end
