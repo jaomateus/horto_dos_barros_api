@@ -3,6 +3,19 @@ class PlantsController < ApplicationController
 
   def index
     plants = Plant.all
+
+    # if params[:name].present?
+    #   plants = plants.where("name ILIKE ?", "%#{params[:name]}%")
+    # end
+
+    # if params[:species].present?
+    #   plants = plants.where("species ILIKE ?", "%#{params[:species]}%")
+    # end
+
+    # if params[:watering_frequency].present?
+    #   plants = plants.where(watering_frequency: params[:watering_frequency])
+    # end
+
     render json: plants, status: 200
   end
 
@@ -31,33 +44,4 @@ class PlantsController < ApplicationController
   def plant_params
     params.require(:plant).permit(:id_trefle, :stock_quantity, :discontinued, :price, :featured, :family, :genus, :scientific_name, :common_name, :eddible, :n_fixer, :image_url)
   end
-
-  # def all_plants
-  #   response = HTTParty.get(
-  #     'https://trefle.io/api/v1/plants',
-  #     query: {
-  #       # "token": ENV['TREFLE_TOKEN']
-  #       "token": 'Cv0vN9QXbnUApDN0YlGKAid97FOTiIoO6PeXdw5lq_8'
-  #     }
-  #   )
-  #   json = response.parsed_response
-  #   render json: json
-  # end
-
-  # def plant
-  #   response = HTTParty.get(
-  #     "https://trefle.io/api/v1/plants/#{params[:id]}",
-  #     query: {
-  #       "token": ENV['TREFLE_TOKEN']
-  #     }
-  #   )
-  #   json = response.parsed_response
-  #   render json: json
-  # end
-
-  # def featured_plants
-
-  # end
-
-
 end

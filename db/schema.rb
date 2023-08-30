@@ -53,5 +53,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_120435) do
     t.string "layer"
     t.string "flower_color"
   end
-
 end

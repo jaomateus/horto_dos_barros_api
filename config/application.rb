@@ -14,12 +14,6 @@ module HortoDosBarrosApi
     # Configuration for the application, engines, and railties goes here.
 
     # Enable Cors connections from frontend
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins 'http://localhost:3000','http://localhost:3001', 'http://localhost:8888' # Replace with your frontend's origin
-        resource '*', headers: :any, methods: [:get, :post, :options]
-      end
-    end
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
